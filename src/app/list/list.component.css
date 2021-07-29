@@ -1,0 +1,21 @@
+.row {
+  padding: 0 1rem;
+}
+
+.list-group-item {
+  width: 70%;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+.btn {
+  width: 100%;
+}
+
+.btn-group {
+  width: 30%;
+  height: inherit;
+}
+
+.strikethrough {
+  text-decoration: line-through;
+}

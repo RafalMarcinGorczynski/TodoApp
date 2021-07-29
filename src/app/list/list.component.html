@@ -1,0 +1,37 @@
+<div class="card-body">
+  <ul class="list-group">
+    <div class="row" #delete>
+      <li class="list-group-item" #strikethrough>
+        {{ name }}
+      </li>
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button
+          type="button"
+          class="btn btn-success"
+          (click)="onAddClass()"
+          *ngIf="isToggle"
+        >
+          Done!
+        </button>
+        <button
+          type="button"
+          class="btn btn-success"
+          (click)="onAddClass()"
+          *ngIf="!isToggle"
+        >
+          Not yet
+        </button>
+        <button
+          type="button"
+          class="btn btn-warning dialog"
+          (click)="openModuleComponent()"
+        >
+          Edit
+        </button>
+        <button type="button" class="btn btn-danger" (click)="onDeleteTask()">
+          Delete
+        </button>
+      </div>
+    </div>
+  </ul>
+</div>
