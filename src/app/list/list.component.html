@@ -8,7 +8,7 @@
         <button
           type="button"
           class="btn btn-success"
-          (click)="onAddClass()"
+          (click)="addClass()"
           *ngIf="isToggle"
         >
           Done!
@@ -16,7 +16,7 @@
         <button
           type="button"
           class="btn btn-success"
-          (click)="onAddClass()"
+          (click)="addClass()"
           *ngIf="!isToggle"
         >
           Not yet
@@ -28,7 +28,12 @@
         >
           Edit
         </button>
-        <button type="button" class="btn btn-danger" (click)="onDeleteTask()">
+        <button
+          type="button"
+          class="btn btn-danger"
+          *ngFor="let task of this.taskService.getAll()"
+          (click)="removeTask(task.id)"
+        >
           Delete
         </button>
       </div>

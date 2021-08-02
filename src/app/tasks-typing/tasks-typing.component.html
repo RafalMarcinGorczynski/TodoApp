@@ -5,15 +5,12 @@
       type="text"
       class="form-control"
       placeholder="New Task"
-      #taskInput
+      name="task"
+      [(ngModel)]="task"
       required
     />
     <br />
-    <button
-      type="button"
-      class="btn btn-primary"
-      (click)="onAddTask(taskInput)"
-    >
+    <button type="button" class="btn btn-primary" (click)="addTask(task)">
       Add
     </button>
   </div>

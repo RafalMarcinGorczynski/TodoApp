@@ -1,12 +1,6 @@
-import {
-  Component,
-  ElementRef,
-  Input,
-  OnInit,
-  Output,
-  ViewChild,
-} from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { TasksService } from 'src/services/tasks.service';
 import { ModalComponent } from '../modal/modal.component';
 
 @Component({
@@ -17,20 +11,19 @@ import { ModalComponent } from '../modal/modal.component';
 export class ListComponent implements OnInit {
   @Input() name: string;
 
-  @ViewChild('delete') deleteElement: ElementRef;
   @ViewChild('strikethrough') strikethroughElement: ElementRef;
 
   isToggle: boolean = true;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, public taskService: TasksService) {}
 
   ngOnInit(): void {}
 
-  onDeleteTask() {
-    this.deleteElement.nativeElement.remove();
+  removeTask(id: number) {
+    this.taskService.remove(id);
   }
 
-  onAddClass() {
+  addClass() {
     this.strikethroughElement.nativeElement.classList.toggle('strikethrough');
     this.isToggle = !this.isToggle;
   }

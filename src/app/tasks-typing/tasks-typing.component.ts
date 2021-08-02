@@ -1,11 +1,5 @@
-import {
-  Component,
-  ElementRef,
-  EventEmitter,
-  OnInit,
-  Output,
-  ViewChild,
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { TasksService } from 'src/services/tasks.service';
 
 interface Todo {
   taskName: string;
@@ -17,19 +11,22 @@ interface Todo {
   styleUrls: ['./tasks-typing.component.css'],
 })
 export class TasksTypingComponent implements OnInit {
-  @Output() taskCreated = new EventEmitter<Todo>();
+  task = '';
 
-  // @ViewChild('taskInput') taskInput: ElementRef;
-
-  constructor() {}
+  constructor(private taskService: TasksService) {}
 
   ngOnInit(): void {}
 
-  onAddTask(taskInput: HTMLInputElement) {
-    this.taskCreated.emit({
-      taskName: taskInput.value,
-      // taskName: this.taskInput.nativeElement.value;
-    });
-    taskInput.value = '';
+  addTask(task: string) {
+    const taskId = this.taskService.getAll().length
+      ? Math.max(...this.taskService.getAll().map((task) => task.id)) + 1
+      : 0;
+
+    this.taskService.add({ id: taskId, content: task, isDone: false });
+    this.setTask('');
+  }
+
+  setTask(task: string) {
+    this.task = task;
   }
 }

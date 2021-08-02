@@ -9,6 +9,7 @@ import { ListComponent } from './list/list.component';
 import { ModalComponent } from './modal/modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TasksService } from 'src/services/tasks.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatDialogModule,
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [TasksService],
   bootstrap: [AppComponent],
   entryComponents: [ModalComponent],
 })
