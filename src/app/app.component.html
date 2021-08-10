@@ -6,14 +6,20 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-5">
-          <app-tasks-typing></app-tasks-typing>
+          <app-tasks-typing
+            [todos]="this.taskService.getAll()"
+            (onAdd)="addTask($event)"
+          >
+          </app-tasks-typing>
         </div>
         <div class="col-sm-7">
           <div class="card">
             <h2>Things I have to do:</h2>
             <app-list
-              *ngFor="let task of this.taskService.getAll()"
+              *ngFor="let task of taskService.getAll()"
               [name]="task.content"
+              [todos]="this.taskService.getAll()"
+              (onRemove)="removeTask($event)"
             ></app-list>
           </div>
         </div>

@@ -1,28 +1,34 @@
-import { Component, OnInit } from '@angular/core';
-import { TasksService } from 'src/services/tasks.service';
-
-interface Todo {
-  taskName: string;
-}
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Todo } from 'src/models/todo.model';
 
 @Component({
   selector: 'app-tasks-typing',
   templateUrl: './tasks-typing.component.html',
-  styleUrls: ['./tasks-typing.component.css'],
+  styleUrls: ['./tasks-typing.component.scss'],
 })
 export class TasksTypingComponent implements OnInit {
+  @Output() onAdd = new EventEmitter<{
+    id: number;
+    content: string;
+    isDone: boolean;
+  }>();
+  @Input() todos: Todo[];
+
   task = '';
 
-  constructor(private taskService: TasksService) {}
+  constructor() {}
 
   ngOnInit(): void {}
 
   addTask(task: string) {
-    const taskId = this.taskService.getAll().length
-      ? Math.max(...this.taskService.getAll().map((task) => task.id)) + 1
+    const taskId = this.todos.length
+      ? Math.max(...this.todos.map((task) => task.id)) + 1
       : 0;
-
-    this.taskService.add({ id: taskId, content: task, isDone: false });
+    this.onAdd.emit({
+      id: taskId,
+      content: task,
+      isDone: false,
+    });
     this.setTask('');
   }
 

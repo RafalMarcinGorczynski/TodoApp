@@ -1,15 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { TasksService } from 'src/services/tasks.service';
 
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.css'],
+  styleUrls: ['./modal.component.scss'],
 })
 export class ModalComponent {
-  constructor(
-    public dialogRef: MatDialogRef<ModalComponent>,
-    public taskService: TasksService
-  ) {}
+  @Input() todo: string;
+  constructor(public dialogRef: MatDialogRef<ModalComponent>) {}
 }

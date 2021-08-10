@@ -5,7 +5,7 @@ import { Todo } from 'src/models/todo.model';
   providedIn: 'root',
 })
 export class TasksService {
-  private todos: Todo[] = [];
+  public todos: Todo[] = [];
 
   constructor() {}
 

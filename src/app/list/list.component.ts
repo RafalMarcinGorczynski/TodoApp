@@ -1,39 +1,48 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { TasksService } from 'src/services/tasks.service';
 import { ModalComponent } from '../modal/modal.component';
+import { Todo } from 'src/models/todo.model';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css'],
+  styleUrls: ['./list.component.scss'],
 })
 export class ListComponent implements OnInit {
+  @Output() onRemove = new EventEmitter<{ id: number }>();
   @Input() name: string;
+  @Input() todos: Todo[];
 
   @ViewChild('strikethrough') strikethroughElement: ElementRef;
 
   isToggle: boolean = true;
 
-  constructor(public dialog: MatDialog, public taskService: TasksService) {}
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {}
-
-  removeTask(id: number) {
-    this.taskService.remove(id);
-  }
 
   addClass() {
     this.strikethroughElement.nativeElement.classList.toggle('strikethrough');
     this.isToggle = !this.isToggle;
   }
 
-  openModuleComponent(): void {
+  openModal(): void {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
 
     this.dialog.open(ModalComponent, dialogConfig);
+  }
+  removeTask(id: number) {
+    this.onRemove.emit({ id });
   }
 }

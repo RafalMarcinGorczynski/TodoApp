@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TasksTypingComponent } from './tasks-typing/tasks-typing.component';
 import { ListComponent } from './list/list.component';
@@ -20,7 +19,6 @@ import { TasksService } from 'src/services/tasks.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     FormsModule,
     MatDialogModule,
     BrowserAnimationsModule,

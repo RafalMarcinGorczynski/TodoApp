@@ -1,6 +1,6 @@
 <div class="card-body">
   <ul class="list-group">
-    <div class="row" #delete>
+    <div class="row">
       <li class="list-group-item" #strikethrough>
         {{ name }}
       </li>
@@ -24,14 +24,14 @@
         <button
           type="button"
           class="btn btn-warning dialog"
-          (click)="openModuleComponent()"
+          (click)="openModal()"
         >
           Edit
         </button>
         <button
           type="button"
           class="btn btn-danger"
-          *ngFor="let task of this.taskService.getAll()"
+          *ngFor="let task of this.todos"
           (click)="removeTask(task.id)"
         >
           Delete
