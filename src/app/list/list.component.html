@@ -1,8 +1,8 @@
-<div class="card-body">
+<div class="card-body" *ngFor="let task of todos">
   <ul class="list-group">
     <div class="row">
       <li class="list-group-item" #strikethrough>
-        {{ name }}
+        {{ task.content }}
       </li>
       <div class="btn-group" role="group" aria-label="Basic example">
         <button
@@ -24,14 +24,13 @@
         <button
           type="button"
           class="btn btn-warning dialog"
-          (click)="openModal()"
+          (click)="openModal(task.id, task.content)"
         >
           Edit
         </button>
         <button
           type="button"
           class="btn btn-danger"
-          *ngFor="let task of this.todos"
           (click)="removeTask(task.id)"
         >
           Delete

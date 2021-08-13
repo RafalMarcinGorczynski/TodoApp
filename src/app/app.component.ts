@@ -8,18 +8,20 @@ import { Todo } from 'src/models/todo.model';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  tasks: Array<Todo> = [];
   constructor(public taskService: TasksService) {}
 
   ngOnInit() {
     this.taskService.restore();
-    this.tasks = [...this.taskService.getAll()];
-    console.log(this.tasks);
   }
   addTask(content) {
     this.taskService.add(content);
   }
   removeTask({ id }) {
     this.taskService.remove(id);
+    console.log(id);
+  }
+  changeName(newTaskName: { id: number; content: string }) {
+    this.taskService.getAll();
   }
 }
+// (changeName)="changeName($event)"

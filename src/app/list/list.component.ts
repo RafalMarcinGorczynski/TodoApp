@@ -18,7 +18,7 @@ import { Todo } from 'src/models/todo.model';
 })
 export class ListComponent implements OnInit {
   @Output() onRemove = new EventEmitter<{ id: number }>();
-  @Input() name: string;
+
   @Input() todos: Todo[];
 
   @ViewChild('strikethrough') strikethroughElement: ElementRef;
@@ -34,13 +34,13 @@ export class ListComponent implements OnInit {
     this.isToggle = !this.isToggle;
   }
 
-  openModal(): void {
+  openModal(id: number, content: string): void {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
 
-    this.dialog.open(ModalComponent, dialogConfig);
+    this.dialog.open(ModalComponent, { data: { id: id, name: content } });
   }
   removeTask(id: number) {
     this.onRemove.emit({ id });

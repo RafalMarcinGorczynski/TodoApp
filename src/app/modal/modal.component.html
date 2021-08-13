@@ -1,10 +1,16 @@
 <h2 mat-dialog-title>Edit task:</h2>
 <div>
-  <input type="text" />
+  <input type="text" value="{{ data.name }}" #newTaskName />
 </div>
 
 <mat-dialog-actions>
-  <button class="btn btn-warning">Ok</button>
+  <button
+    class="btn btn-warning"
+    (click)="changeTaskName(data.id, newTaskName)"
+    [mat-dialog-close]="true"
+  >
+    Ok
+  </button>
   <button class="btn btn-secondary" mat-raised-button [mat-dialog-close]="true">
     Close
   </button>

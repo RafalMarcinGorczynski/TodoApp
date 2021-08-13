@@ -16,8 +16,6 @@
           <div class="card">
             <h2>Things I have to do:</h2>
             <app-list
-              *ngFor="let task of taskService.getAll()"
-              [name]="task.content"
               [todos]="this.taskService.getAll()"
               (onRemove)="removeTask($event)"
             ></app-list>
