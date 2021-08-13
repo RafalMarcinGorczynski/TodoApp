@@ -24,7 +24,7 @@
         <button
           type="button"
           class="btn btn-warning dialog"
-          (click)="openModal(task.id, task.content)"
+          (click)="openModal(); passIndex(task.id)"
         >
           Edit
         </button>

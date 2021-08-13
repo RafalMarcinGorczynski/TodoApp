@@ -26,6 +26,16 @@ export class TasksService {
     this.persist();
   }
 
+  update(id, task) {
+    if (task != '') {
+      this.todos[id] = task;
+    } else {
+      this.todos = this.todos;
+    }
+
+    this.persist();
+  }
+
   remove(id: number) {
     this.todos = this.todos.filter((todo) => todo.id !== id);
     this.persist();

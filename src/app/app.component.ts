@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { TasksService } from 'src/services/tasks.service';
-import { Todo } from 'src/models/todo.model';
 
 @Component({
   selector: 'app-root',
@@ -15,13 +14,14 @@ export class AppComponent implements OnInit {
   }
   addTask(content) {
     this.taskService.add(content);
+    console.log(content);
+    console.log(content.id);
   }
   removeTask({ id }) {
     this.taskService.remove(id);
-    console.log(id);
   }
-  changeName(newTaskName: { id: number; content: string }) {
-    this.taskService.getAll();
+  updateTask(task) {
+    console.log(task);
+    this.taskService.update(task.id, task);
   }
 }
-// (changeName)="changeName($event)"

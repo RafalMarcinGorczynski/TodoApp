@@ -18,6 +18,7 @@
             <app-list
               [todos]="this.taskService.getAll()"
               (onRemove)="removeTask($event)"
+              (changeName)="updateTask($event)"
             ></app-list>
           </div>
         </div>

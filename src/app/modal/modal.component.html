@@ -1,13 +1,13 @@
 <h2 mat-dialog-title>Edit task:</h2>
 <div>
-  <input type="text" value="{{ data.name }}" #newTaskName />
+  <input matInput [(ngModel)]="data.newName" required />
 </div>
 
 <mat-dialog-actions>
   <button
     class="btn btn-warning"
-    (click)="changeTaskName(data.id, newTaskName)"
-    [mat-dialog-close]="true"
+    [mat-dialog-close]="data.newName"
+    cdkFocusInitial
   >
     Ok
   </button>

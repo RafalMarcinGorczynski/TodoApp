@@ -7,7 +7,12 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import {
+  MatDialog,
+  MatDialogConfig,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+} from '@angular/material/dialog';
 import { ModalComponent } from '../modal/modal.component';
 import { Todo } from 'src/models/todo.model';
 
@@ -18,8 +23,15 @@ import { Todo } from 'src/models/todo.model';
 })
 export class ListComponent implements OnInit {
   @Output() onRemove = new EventEmitter<{ id: number }>();
-
+  @Output() changeName = new EventEmitter<{
+    id: number;
+    content: string;
+    isDone: boolean;
+  }>();
   @Input() todos: Todo[];
+
+  newName: string;
+  index: number;
 
   @ViewChild('strikethrough') strikethroughElement: ElementRef;
 
@@ -28,21 +40,29 @@ export class ListComponent implements OnInit {
   constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {}
+  ngAfterViewChecked() {
+    this.changeName.emit({
+      id: this.index,
+      content: this.newName,
+      isDone: false,
+    });
+  }
 
   addClass() {
-    this.strikethroughElement.nativeElement.classList.toggle('strikethrough');
+    this.strikethroughElement.nativeElement.classList.toggle('completed');
     this.isToggle = !this.isToggle;
   }
 
-  openModal(id: number, content: string): void {
-    const dialogConfig = new MatDialogConfig();
-
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-
-    this.dialog.open(ModalComponent, { data: { id: id, name: content } });
+  openModal(): void {
+    const dialogRef = this.dialog.open(ModalComponent, {
+      data: { name: this.newName },
+    });
+    dialogRef.afterClosed().subscribe((result) => (this.newName = result));
   }
   removeTask(id: number) {
     this.onRemove.emit({ id });
+  }
+  passIndex(index: number) {
+    this.index = index;
   }
 }
