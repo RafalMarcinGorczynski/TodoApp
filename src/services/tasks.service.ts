@@ -29,6 +29,7 @@ export class TasksService {
   update(index, task: string) {
     // this.todos[id].content = task;
     for (const i of Object.keys(this.todos)) {
+      console.log(Object.values(task));
       if (this.todos[i].id == index.id) {
         this.todos[i].content = Object.values(task);
       }

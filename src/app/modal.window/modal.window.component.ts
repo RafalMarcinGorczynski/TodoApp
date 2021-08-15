@@ -1,4 +1,11 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 
 @Component({
   selector: 'app-modal-window',
@@ -8,23 +15,19 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class ModalWindowComponent implements OnInit {
   @Output() closeModal = new EventEmitter<string>();
   @Output() passNewName = new EventEmitter<{ content: string }>();
+  @ViewChild('inputName', { static: true }) inputName: ElementRef;
 
-  newNameInput = '';
   constructor() {}
 
   ngOnInit(): void {}
 
   close(nameClass: string) {
     this.closeModal.emit(nameClass);
-    this.setNewName('');
   }
-  getNewName(Taskname) {
-    this.passNewName.emit({ content: Taskname });
-    this.setNewName('');
+  getNewName(Taskname: HTMLInputElement) {
+    this.passNewName.emit({ content: Taskname.value });
   }
-  setNewName(name: string) {
-    this.newNameInput = name;
-  }
+
   success() {
     const inputValue = (<HTMLInputElement>document.getElementById('textsend'))
       .value;

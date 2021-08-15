@@ -5,20 +5,26 @@
       <input
         type="text"
         id="textsend"
+        placeholder="What's change?"
         (keyup)="success()"
-        [(ngModel)]="newNameInput"
+        #inputName
         required
       />
       <br />
       <button
         class="btn btn-success"
         id="button"
-        (click)="close('none'); getNewName(newNameInput)"
+        (click)="close('none'); getNewName(inputName); inputName.value = ''"
         disabled
       >
         Confirm
       </button>
-      <button class="btn btn-secondary" (click)="close('none')">Close</button>
+      <button
+        class="btn btn-secondary"
+        (click)="close('none'); inputName.value = ''"
+      >
+        Close
+      </button>
     </div>
   </div>
   <div class="modal__window-background"></div>
