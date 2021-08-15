@@ -26,13 +26,13 @@ export class TasksService {
     this.persist();
   }
 
-  update(id, task) {
-    if (task != '') {
-      this.todos[id] = task;
-    } else {
-      this.todos = this.todos;
+  update(index, task: string) {
+    // this.todos[id].content = task;
+    for (const i of Object.keys(this.todos)) {
+      if (this.todos[i].id == index.id) {
+        this.todos[i].content = Object.values(task);
+      }
     }
-
     this.persist();
   }
 

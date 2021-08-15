@@ -7,10 +7,16 @@ import { TasksService } from 'src/services/tasks.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
+  updateName: string;
+  index: number;
   constructor(public taskService: TasksService) {}
 
   ngOnInit() {
     this.taskService.restore();
+  }
+  getIndex(i) {
+    this.index = i;
+    console.log(this.taskService.getAll());
   }
   addTask(content) {
     this.taskService.add(content);
@@ -22,6 +28,15 @@ export class AppComponent implements OnInit {
   }
   updateTask(task) {
     console.log(task);
-    this.taskService.update(task.id, task);
+    this.taskService.update(this.index, task);
+  }
+
+  openModal(nameClass1) {
+    document.getElementById('modal-1').style.display = nameClass1;
+    document.body.classList.add('modal-open');
+  }
+  closeModal(nameClass2) {
+    document.getElementById('modal-1').style.display = nameClass2;
+    document.body.classList.remove('modal-open');
   }
 }

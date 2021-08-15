@@ -1,0 +1,25 @@
+<div class="div-to-align">
+  <div class="modal__window">
+    <div class="modal__window-body">
+      <h2>Edit task:</h2>
+      <input
+        type="text"
+        id="textsend"
+        (keyup)="success()"
+        [(ngModel)]="newNameInput"
+        required
+      />
+      <br />
+      <button
+        class="btn btn-success"
+        id="button"
+        (click)="close('none'); getNewName(newNameInput)"
+        disabled
+      >
+        Confirm
+      </button>
+      <button class="btn btn-secondary" (click)="close('none')">Close</button>
+    </div>
+  </div>
+  <div class="modal__window-background"></div>
+</div>

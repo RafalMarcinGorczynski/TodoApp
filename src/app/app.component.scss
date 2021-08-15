@@ -1,24 +1,29 @@
-body{
-    background-image: url(../assets/background-image.jpg);
-    height: 100vh;
-    background-size: cover;
-    z-index: 1000;
+body {
+  background-image: url(../assets/background-image.jpg);
+  height: 100vh;
+  background-size: cover;
+  z-index: 1000;
 }
 
-
-h1{
-    font-size: 3rem;
-    text-align: center;
-    padding: 3rem;
+h1 {
+  font-size: 3rem;
+  text-align: center;
+  padding: 3rem;
 }
 
-h2{
-    color: white;
-    margin: 1rem 1rem 0 1rem;
+h2 {
+  color: white;
+  margin: 1rem 1rem 0 1rem;
 }
-.card{
-    margin: 0 1rem;
-    background-color: rgba(110, 110, 110, 0.5); 
-    box-shadow: 5px 3px 15px 3px rgba(15,15,15,0.3);
+.card {
+  margin: 0 1rem;
+  background-color: rgba(110, 110, 110, 0.5);
+  box-shadow: 5px 3px 15px 3px rgba(15, 15, 15, 0.3);
 }
 
+.modal-wrapper {
+  display: none;
+}
+.modal-open {
+  overflow: hidden;
+}

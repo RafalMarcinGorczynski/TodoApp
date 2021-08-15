@@ -18,11 +18,18 @@
             <app-list
               [todos]="this.taskService.getAll()"
               (onRemove)="removeTask($event)"
-              (changeName)="updateTask($event)"
+              (getIndex)="getIndex($event)"
+              (openModal)="openModal($event)"
             ></app-list>
           </div>
         </div>
       </div>
     </div>
+    <app-modal-window
+      class="modal-wrapper"
+      id="modal-1"
+      (closeModal)="closeModal($event)"
+      (passNewName)="updateTask($event)"
+    ></app-modal-window>
   </body>
 </html>
