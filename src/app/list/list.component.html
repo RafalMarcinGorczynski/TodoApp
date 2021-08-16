@@ -2,30 +2,18 @@
   <ul class="list-group">
     <div class="row">
       <li class="list-group-item" #strikethrough>
-        {{ task.content }}
+        {{ this.task.content }}
       </li>
       <div class="btn-group" role="group" aria-label="Basic example">
-        <button
-          type="button"
-          class="btn btn-success"
-          (click)="addClass()"
-          *ngIf="isToggle"
-        >
-          Done!
+        <button type="button" class="btn btn-success" (click)="addClass()">
+          {{ Done ? "Done" : "Not yet" }}
         </button>
-        <button
-          type="button"
-          class="btn btn-success"
-          (click)="addClass()"
-          *ngIf="!isToggle"
-        >
-          Not yet
-        </button>
+
         <button
           type="button"
           class="btn btn-warning dialog"
           (click)="passIndex(task.id)"
-          (click)="openModal2('block')"
+          (click)="open('block')"
         >
           Edit
         </button>

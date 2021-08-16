@@ -16,18 +16,14 @@ export class AppComponent implements OnInit {
   }
   getIndex(i) {
     this.index = i;
-    console.log(this.taskService.getAll());
   }
   addTask(content) {
     this.taskService.add(content);
-    console.log(content);
-    console.log(content.id);
   }
   removeTask({ id }) {
     this.taskService.remove(id);
   }
   updateTask(task) {
-    console.log(task);
     this.taskService.update(this.index, task);
   }
 

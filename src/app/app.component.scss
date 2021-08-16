@@ -21,8 +21,20 @@ h2 {
   box-shadow: 5px 3px 15px 3px rgba(15, 15, 15, 0.3);
 }
 
+@keyframes animatetop {
+  from {
+    top: -20%;
+    opacity: 0;
+  }
+  to {
+    top: 20%;
+    opacity: 1;
+  }
+}
 .modal-wrapper {
   display: none;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
 }
 .modal-open {
   overflow: hidden;

@@ -25,11 +25,12 @@ export class ListComponent implements OnInit {
   index: number;
 
   @ViewChild('strikethrough') strikethroughElement: ElementRef;
-
-  isToggle: boolean = true;
+  cos;
+  Done: boolean = true;
 
   constructor() {}
-  openModal2(nameClass: string) {
+
+  open(nameClass: string) {
     this.openModal.emit(nameClass);
   }
 
@@ -37,7 +38,7 @@ export class ListComponent implements OnInit {
 
   addClass() {
     this.strikethroughElement.nativeElement.classList.toggle('completed');
-    this.isToggle = !this.isToggle;
+    this.Done = !this.Done;
   }
 
   removeTask(id: number) {
