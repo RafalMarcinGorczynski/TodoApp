@@ -10,6 +10,7 @@ export class TasksTypingComponent implements OnInit {
   @Output() onAdd = new EventEmitter<{
     id: number;
     content: string;
+    isDone: boolean;
   }>();
   @Input() todos: Todo[];
 
@@ -26,6 +27,7 @@ export class TasksTypingComponent implements OnInit {
     this.onAdd.emit({
       id: taskId,
       content: task,
+      isDone: false,
     });
     this.setTask('');
   }

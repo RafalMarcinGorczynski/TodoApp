@@ -25,8 +25,6 @@ export class ListComponent implements OnInit {
   index: number;
 
   @ViewChild('strikethrough') strikethroughElement: ElementRef;
-  cos;
-  Done: boolean = true;
 
   constructor() {}
 
@@ -36,9 +34,9 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  addClass() {
+  addClass(bool) {
+    if (bool === false) console.log('hej');
     this.strikethroughElement.nativeElement.classList.toggle('completed');
-    this.Done = !this.Done;
   }
 
   removeTask(id: number) {
