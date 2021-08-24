@@ -5,7 +5,6 @@
 .card {
   color: white;
   background-color: rgba(110, 110, 110, 0.5);
-  padding: 1rem;
   margin: 0 6rem;
   box-shadow: 5px 3px 15px 3px rgba(15, 15, 15, 0.3);
 }
@@ -13,4 +12,20 @@
 h5 {
   font-size: 2rem;
   margin-bottom: 1rem;
+}
+@media screen and (max-width: 1550px) {
+  .card {
+    margin: 0 4rem;
+  }
+}
+@media screen and (max-width: 1380px) {
+  .card {
+    margin: 0 2rem;
+  }
+}
+@media screen and (max-width: 1080px) {
+  h5 {
+    font-size: 1.8rem;
+    text-align: center;
+  }
 }

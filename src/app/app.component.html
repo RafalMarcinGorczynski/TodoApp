@@ -1,35 +1,37 @@
 <html>
   <body>
-    <header>
-      <h1>Todo-app</h1>
-    </header>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-5">
-          <app-tasks-typing
-            [todos]="this.taskService.getAll()"
-            (onAdd)="addTask($event)"
-          >
-          </app-tasks-typing>
-        </div>
-        <div class="col-sm-7">
-          <div class="card">
-            <h2>Things I have to do:</h2>
-            <app-list
+    <div class="bg">
+      <header>
+        <h1>Todo-app</h1>
+      </header>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col">
+            <app-tasks-typing
               [todos]="this.taskService.getAll()"
-              (onRemove)="removeTask($event)"
-              (getIndex)="getIndex($event)"
-              (openModal)="openModal($event)"
-            ></app-list>
+              (onAdd)="addTask($event)"
+            >
+            </app-tasks-typing>
+          </div>
+          <div class="col">
+            <div class="card">
+              <h2>Things I have to do:</h2>
+              <app-list
+                [todos]="this.taskService.getAll()"
+                (onRemove)="removeTask($event)"
+                (getIndex)="getIndex($event)"
+                (openModal)="openModal($event)"
+              ></app-list>
+            </div>
           </div>
         </div>
       </div>
+      <app-modal-window
+        class="modal-wrapper"
+        id="modal-1"
+        (closeModal)="closeModal($event)"
+        (passNewName)="updateTask($event)"
+      ></app-modal-window>
     </div>
-    <app-modal-window
-      class="modal-wrapper"
-      id="modal-1"
-      (closeModal)="closeModal($event)"
-      (passNewName)="updateTask($event)"
-    ></app-modal-window>
   </body>
 </html>

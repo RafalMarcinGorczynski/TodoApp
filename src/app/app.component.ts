@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
   }
   getIndex(i) {
     this.index = i;
+    console.log(this.taskService.getAll());
   }
   addTask(content) {
     this.taskService.add(content);

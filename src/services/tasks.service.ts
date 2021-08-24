@@ -29,7 +29,7 @@ export class TasksService {
   update(index, task: string) {
     for (const i of Object.keys(this.todos)) {
       if (this.todos[i].id == index.id) {
-        this.todos[i].content = Object.values(task);
+        this.todos[i].content = Object.values(task)[0];
       }
     }
     this.persist();

@@ -34,8 +34,7 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  addClass(bool) {
-    if (bool === false) console.log('hej');
+  addClass() {
     this.strikethroughElement.nativeElement.classList.toggle('completed');
   }
 
