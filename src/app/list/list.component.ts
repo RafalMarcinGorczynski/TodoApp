@@ -34,10 +34,6 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  addClass() {
-    this.strikethroughElement.nativeElement.classList.toggle('completed');
-  }
-
   removeTask(id: number) {
     this.onRemove.emit({ id });
   }

@@ -36,6 +36,7 @@ export class TasksService {
   }
 
   remove(id: number) {
+    console.log(this.todos);
     this.todos = this.todos.filter((todo) => todo.id !== id);
     this.persist();
   }
