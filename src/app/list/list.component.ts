@@ -1,12 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-  ViewChild,
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { Todo } from 'src/models/todo.model';
 
@@ -23,8 +15,6 @@ export class ListComponent implements OnInit {
 
   newName: string;
   index: number;
-
-  @ViewChild('strikethrough') strikethroughElement: ElementRef;
 
   constructor() {}
 
