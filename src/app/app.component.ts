@@ -35,4 +35,8 @@ export class AppComponent implements OnInit {
     document.getElementById('modal-1').style.display = nameClass2;
     document.body.classList.remove('modal-open');
   }
+
+  changeClass({ id }) {
+    this.taskService.changeClass(id);
+  }
 }

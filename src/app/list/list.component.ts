@@ -11,10 +11,12 @@ export class ListComponent implements OnInit {
   @Output() onRemove = new EventEmitter<{ id: number }>();
   @Output() getIndex = new EventEmitter<{ id: number }>();
   @Output() openModal = new EventEmitter<string>();
+  @Output() changeCl = new EventEmitter<{ id: number }>();
   @Input() todos: Todo[];
 
   newName: string;
   index: number;
+  toggleClass: boolean = false;
 
   constructor() {}
 
@@ -30,4 +32,8 @@ export class ListComponent implements OnInit {
   passIndex(index: number) {
     this.getIndex.emit({ id: index });
   }
+  changeClass(id: number) {
+    this.changeCl.emit({ id });
+  }
 }
+// <input type="checkbox" [(ngModel)]="task.toggleClass" />

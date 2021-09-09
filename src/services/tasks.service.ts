@@ -34,6 +34,9 @@ export class TasksService {
     }
     this.persist();
   }
+  changeClass(index) {
+    this.todos[index].toggleClass = !this.todos[index].toggleClass;
+  }
 
   remove(id: number) {
     this.todos = this.todos.filter((todo) => todo.id !== id);
